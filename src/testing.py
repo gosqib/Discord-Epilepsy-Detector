@@ -19,7 +19,7 @@ def c_resize(img: np.ndarray, text_width_min: int = 200) -> np.ndarray:
 
     # cv2.resize requires int arguments
     # map over list comp for performance boost even accounting for tuple conversion
-    dimensions: map[int] = map(int, (width, height))
+    dimension = map(int, (width, height))
     
     # tuple > list for space
     return cv.resize(img, tuple(dimensions))
