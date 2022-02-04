@@ -1,0 +1,3 @@
+# Discord-Epilepsy-Detector
+
+docs
