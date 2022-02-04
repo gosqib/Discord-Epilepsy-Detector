@@ -35,7 +35,7 @@ class Detector:
 			DRAMATIC_PIXEL_CHANGE = 180
 			cut_frames = self._all_frames 	# if the video is short, just take everything
 		else:
-			DANGER_TRIGGER_REQUIREMENT = 7
+			DANGER_TRIGGER_REQUIREMENT = 8
 			DRAMATIC_PIXEL_CHANGE = 200
 			cut_frames = (
 				self._all_frames
