@@ -35,8 +35,7 @@ async def on_message(message):
 
         if message_text.startswith('https://tenor.com/'): #if true, message text would be the wanted link
             # check for epilepsy in this gif through webscraping
-            
-            DANGER_TRIGGER_REQUIREMENT = 1 # gifs are shorter so bar is lowered
+
             file_mdta = get_tenor(link=message_text)
             gif = cv.VideoCapture(file_mdta)
             check = Detector(gif).epilepsy()
