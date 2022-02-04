@@ -21,6 +21,8 @@ def get_tenor(link: str) -> str:
             .replace('/', '')
             .replace(':', '')
     )
+    
+    # save gif
     with open(file_name, 'wb') as f:
         f.write(requests.get(download_location).content)
     
