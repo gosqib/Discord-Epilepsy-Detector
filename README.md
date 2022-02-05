@@ -3,11 +3,11 @@
 # Also, the gif checker does NOT work with message that don't start with `https://tenor.com/`
 Ex. `qwehttps://tenor.com/ZJXy.gif`
 <br>
+https://user-images.githubusercontent.com/69024184/152654024-3672dba8-ce8a-4fb6-b2aa-4c8deaa83879.mp4
 
-https://github.com/gosqib/Discord-Epilepsy-Detector/blob/master/src/discordbot.py#L82
 ## Setup
 1. Open the command prompt and download the required packages with `pip install opencv-python, numpy, discord.py, beautifulsoup4`
-2. Add in your discord bot token by replacing [`TOKEN`](https://user-images.githubusercontent.com/69024184/152654024-3672dba8-ce8a-4fb6-b2aa-4c8deaa83879.mp4)'s value of `[ADD_YOUR_TOKEN_HERE]` (delete brackets too)
+2. Add in your discord bot token by replacing [`TOKEN`](https://github.com/gosqib/Discord-Epilepsy-Detector/blob/master/src/discordbot.py#L82)'s value of `[ADD_YOUR_TOKEN_HERE]` (delete brackets too)
 
 Now you can run `discordbot.py` in `src` and the bot will start working in all servers.
 
