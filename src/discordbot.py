@@ -79,5 +79,5 @@ async def on_message(message):
 async def bruh(ctx):
 	await ctx.send(bot.user)
 
-TOKEN = "OTM2NDQzMDE0NzY1NzU2NDE2.YfNQhA.Seeg93GeJMVPbI_jQA8E3gw2_54"
+TOKEN = "[ADD_YOUR_TOKEN_HERE]"
 bot.run(TOKEN)
