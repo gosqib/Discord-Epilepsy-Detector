@@ -37,11 +37,7 @@ class Detector:
 		else:
 			DANGER_TRIGGER_REQUIREMENT = MP4_DANG_TRIG_REQ
 			DRAMATIC_PIXEL_CHANGE = MP4_DRAM_PIX_CHANGE
-			cut_frames = (
-				self._all_frames
-				[FRAME_SKIP_START :: FRAME_COLLECTION_SKIP] 
-				# take every x frame starting from s - getting everything is not usually useful
-			)
+			cut_frames = self._all_frames[FRAME_SKIP_START :: FRAME_COLLECTION_SKIP] # take every x frame starting from s
 
 		# group the frames of the _video into tuples with 100 frames each, stored in dictionary
 		frames = (cv.cvtColor(frame, cv.COLOR_BGR2GRAY) for frame in cut_frames)
