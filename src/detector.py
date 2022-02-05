@@ -1,9 +1,21 @@
+from typing import Optional
 import cv2 as cv #type: ignore
 import numpy as np
 
-from testing import *
-from consts import *
-from toolbox import *
+from toolbox import get_frames
+from testing import TEST_VIDEO
+from keyvars.consts import (
+	GIF_DANG_TRIG_REQ, 
+	HORIZ_PORTIONS, 
+	VERT_PORTIONS, 
+	GIF_DRAM_PIX_CHANGE,
+	MP4_DANG_TRIG_REQ,
+	MP4_DRAM_PIX_CHANGE,
+	FRAME_SKIP_START,
+	FRAME_COLLECTION_SKIP,
+	NO_PORTIONS,
+	PORTION_DATA_MAX_CAPACITY,
+)
 
 class Detector:
 	__doc__ = """
@@ -37,21 +49,17 @@ class Detector:
 		else:
 			DANGER_TRIGGER_REQUIREMENT = MP4_DANG_TRIG_REQ
 			DRAMATIC_PIXEL_CHANGE = MP4_DRAM_PIX_CHANGE
-			cut_frames = self._all_frames[FRAME_SKIP_START :: FRAME_COLLECTION_SKIP] # take every x frame starting from s
+			cut_frames = (
+				self._all_frames
+				[FRAME_SKIP_START :: FRAME_COLLECTION_SKIP] 
+				# take every x frame starting from s - getting everything is not usually useful
+			)
 
 		# group the frames of the _video into tuples with 100 frames each, stored in dictionary
 		frames = (cv.cvtColor(frame, cv.COLOR_BGR2GRAY) for frame in cut_frames)
 		triggers = 0
 
-		# next two bunches of code are to separate the images into 8 portions
-		# this is done to increase precision...in theory
-		portion_dims = tuple(
-			(self._portion_height * i, self._portion_width * j) # coordinates
-			for i in range(VERT_PORTIONS)                       # rows
-			for j in range(HORIZ_PORTIONS)                      # columns
-		) # represented by a tuple of {portion_number} elements that point toward 
-		  # future cropping locations
-
+		# separate the images into 8 portions to increase precision...in theory
 		portion_data: dict[int, list[int]] = {i: [] for i in range(NO_PORTIONS)}
 		for frame in frames:
 			frame_data = [
@@ -60,7 +68,11 @@ class Detector:
 					x_cor : x_cor + self._portion_width
 				] 
 				for y_cor, x_cor 
-				in portion_dims 
+				in (
+					(self._portion_height * i, self._portion_width * j)	# coordinates
+					for i in range(VERT_PORTIONS)						# rows	
+					for j in range(HORIZ_PORTIONS)						# columns
+				) # these are where the croppings of the sections start
 			]
 
 			# if some data about the frames exists, perform analysis
