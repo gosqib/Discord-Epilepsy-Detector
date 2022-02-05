@@ -1,11 +1,13 @@
 from discord.ext import commands #type:ignore
 import cv2 as cv #type:ignore
 import discord #type:ignore
+from typing import Annotated, Any, Union
 import os
 
-from detector import Detector
+from keyvars.consts import EPILEPSY_DETECTION_REACTIONS
+from keyvars.mytypes import DiscordMessageReactions
 from webscrape import get_tenor
-from consts import EPILEPSY_DETECTION_REACTIONS, GIF_DANG_TRIG_REQ, GIF_DRAM_PIX_CHANGE, MP4_DANG_TRIG_REQ, MP4_DRAM_PIX_CHANGE
+from detector import Detector
 
 bot = commands.Bot(command_prefix='$')
 
@@ -15,7 +17,7 @@ async def on_ready() -> None:
 	print(f'{bot.user} connected')
 
 @bot.event
-async def on_message(message):
+async def on_message(message: Any) -> Annotated[None, 'or', DiscordMessageReactions]:
 	if message.author == bot.user:
 		return
 		
@@ -33,13 +35,12 @@ async def on_message(message):
 	if not attachments:
 		message_text: str = message.content
 
-		if message_text.startswith('https://tenor.com/'): #if true, message text would be the wanted link
+		if message_text.startswith('https://tenor.com/'):
+			# if true, the link to webscrape would be the message
+
 			# check for epilepsy in this gif through webscraping
-			
 			file_mdta = get_tenor(link=message_text)
 			gif = cv.VideoCapture(file_mdta)
-
-			# adjustments for gifs since they're different from .mp4
 			check = Detector(gif).epilepsy(is_gif=True)
 			# print(check)
 
@@ -50,8 +51,7 @@ async def on_message(message):
 			gif=None # killing the opencv control over this gif file to be able to delete the file
 			os.remove(file_mdta)
 
-		return # once the analysis of a theoretical gif is done, 
-			   # or if the message doesn't have any attachments or tenor links, pass this message
+		return # enough has been analyzed or avoid a plain text message
 
 	video = message.attachments[0]
 	if video.content_type != 'video/mp4':
