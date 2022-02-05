@@ -2,7 +2,7 @@ from typing import Optional, Union
 import cv2 as cv #type:ignore
 import numpy as np
 
-from consts import TEST_DATA_DIR
+from keyvars.consts import TEST_DATA_DIR
 
 def c_resize(img: np.ndarray, text_width_min: int = 200) -> np.ndarray:
     """resize image - used to resize the text image accordingly
@@ -19,15 +19,15 @@ def c_resize(img: np.ndarray, text_width_min: int = 200) -> np.ndarray:
 
     # cv2.resize requires int arguments
     # map over list comp for performance boost even accounting for tuple conversion
-    dimension = map(int, (width, height))
+    dimensions: map[int] = map(int, (width, height))
     
     # tuple > list for space
     return cv.resize(img, tuple(dimensions))
+
 
 
 YESEP_VIDEO     = cv.VideoCapture(f'{TEST_DATA_DIR}/epil.mp4')
 NOEP_VIDEO      = cv.VideoCapture(f'{TEST_DATA_DIR}/randomvid.mp4')
 MIX_VIDEO       = cv.VideoCapture(f'{TEST_DATA_DIR}/mix.mp4')
 TEST_VIDEO      = cv.VideoCapture(f'{TEST_DATA_DIR}/Me at the zoo.mp4')
-
 
