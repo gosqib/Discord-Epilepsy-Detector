@@ -27,7 +27,7 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 4. Loop through the frames
 5. Store the pixel averages of the eight portions
 6. On the next frame, check if there's a massive difference in any of the last ten results obtained through step `5.`. If there is, increase the trigger counter
-7. After the loop, if the count of triggers is above seven, return `True`.
+7. After the loop, if the count of triggers is above seven, return `True`
 
 <ins>If video is a gif</ins>
 1. Lower the requirements of number of dangerous frames required to conclude a potential seizure trigger found and the difference required to sound the alarm (gifs are shorter so less quantities of danger are required)
