@@ -10,10 +10,11 @@ Now you can run `discordbot.py` in `src` and the bot will start working in all s
 
 ## Features
 
-No commands, just a discord `on_message` event handler. Whenever a message is sent in any server, the program will first check if there're any attachments. If there is, check if the first attachment is a `.mp4` file, if so; it would perform the epilepsy checking algorithm on it. If the previous requirements weren't satisfied, check if the message is a discord `/tenor` message and if so, perform the epilepsy algorithm on the `/tenor` message.  
+No commands, just a discord `on_message` event handler. Whenever a message is sent in any server, the program will first check if there're any attachments. If there is, check if the first attachment is a `.mp4` file, if so; perform the epilepsy checking algorithm on it. If the previous requirements weren't satisfied, check if the message is a discord `/tenor` message and pending a `True`, perform the epilepsy algorithm on the `/tenor` message.  
 
 ## Implementation
-...
+# Epilepsy checking algorithm
+<u>If video is a gif</u>
 
 ## Time Complexity
 
