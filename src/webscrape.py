@@ -12,10 +12,7 @@ def get_tenor(link: str) -> str:
     html = urlopen(link).read().decode("utf-8")
     soup = BeautifulSoup(html, "html.parser")
     gif = soup.find_all('div', class_='Gif')[0]
-
-    gif = soup.find_all('div', class_='Gif')[0]
     download_location = gif.next['src']
-
     file_name = (
         link
             .replace('/', '')
@@ -26,5 +23,5 @@ def get_tenor(link: str) -> str:
     with open(file_name, 'wb') as f:
         f.write(requests.get(download_location).content)
     
-    return file_name # this will be passed into a method that will require the file name in 
-                     # the current directory
+    return file_name # this will be passed into a method that will require the file name
+                     # to work on the file
