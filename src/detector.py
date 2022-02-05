@@ -25,18 +25,18 @@ class Detector:
 		self._all_frames = tuple(get_frames(self._video))	# list > tuple for mutability to slice last element
 		# print(len(self._all_frames))
 
-	def epilepsy(self) -> bool:
+	def epilepsy(self, is_gif: Optional[bool] = False) -> bool:
 		"""detect hard flashing lights"""
 		
-		if len(self._all_frames) < GIF_DETERMINER_MINFRAME:
+		if is_gif:
 			# this section is just some adjustments for gifs since they're different from .mp4
 			
-			DANGER_TRIGGER_REQUIREMENT = 1	# also lower the trigger quantity requirements
-			DRAMATIC_PIXEL_CHANGE = 180
+			DANGER_TRIGGER_REQUIREMENT = GIF_DANG_TRIG_REQ
+			DRAMATIC_PIXEL_CHANGE = GIF_DRAM_PIX_CHANGE
 			cut_frames = self._all_frames 	# if the video is short, just take everything
 		else:
-			DANGER_TRIGGER_REQUIREMENT = 8
-			DRAMATIC_PIXEL_CHANGE = 200
+			DANGER_TRIGGER_REQUIREMENT = MP4_DANG_TRIG_REQ
+			DRAMATIC_PIXEL_CHANGE = MP4_DRAM_PIX_CHANGE
 			cut_frames = (
 				self._all_frames
 				[FRAME_SKIP_START :: FRAME_COLLECTION_SKIP] 
