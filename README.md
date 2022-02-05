@@ -41,7 +41,7 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 ##### Small details will be neglected
 -> `(Looping through every frame) * [(loop through frame to find mean pixel val) + (check if last ten frame's pixel value) + (add current frame data to storage) + (remove first data item in storage of portion if capacity reaches ten)]`
 <br>
--> `N * [(F_w)(F_l) + 10 + 1 + 10]` where `F_w` is the frame's width and `F_l` is the frame's length. In this case, the computation of `F_w * F_l` will be `1/N`
+-> `N * [(F_w)(F_l) + 10 + 1 + 10]` where `F_w` is the frame's width and `F_l` is the frame's length. In this case, the computation of `F_w * F_l` will be considered `1/N` (ignoring actual numerical values here)
 <br>
 -> `N * (1/N + 21)`
 <br>
