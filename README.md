@@ -14,15 +14,17 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 
 ## Main Strategy
 ### Epilepsy checking algorithm
-<ins>Preliminary Steps</ins>
+<ins>Preliminary steps</ins>
 1. Read all frames
-<br>
-<ins>If video is an `.mp4`</ins>
+
+<ins>Main analysis</ins>
 1. Skip every second frame  (the differences in every frame is negligible and causes inconsistencies)
 2. Grayscale every image    (so the 
 
 <ins>If video is a gif</ins>
-
+1. Lower the requirements of number of dangerous frames required to conclude an epilepsy trigger found and the difference required to sound the alarm (gifs are shorter so less quantities of danger are required)
+3. Set the data to be analyzed by the algorithm as every frame in the video (when the length of the video is short, every frame counts)
+4. askldjasdklj
 
 ## Time Complexity
 
