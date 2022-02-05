@@ -21,18 +21,23 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 1. Skip every second frame (the differences in every frame is negligible and causes inconsistencies)
 2. Grayscale every image (so it's easier to check frame's pixel averages to determine big differences)
 3. Split each frame into eight equal parts ![image](https://user-images.githubusercontent.com/69024184/152646909-5d912253-120e-44bb-a797-afa75dd6c477.png) (breaking the image into smaller parts allow smaller portions of the image that could be an seizure trigger to be noticed in the difference-checking-process. If the entire image was checked for a pixel change, and only 50% of the image was a potential trigger, it may possibly miss the changes)
-4. asd
+<br>
+>>
+4. Loop through the frames
+5. Store the pixel averages of the eight portions
+6. On the next frame, check if there's a massive difference in any of the last ten results obtained through step `5.`. If there is, increase the trigger counter
+7. After the loop, if the count of triggers is above seven, return `True`.
 
 <ins>If video is a gif</ins>
 1. Lower the requirements of number of dangerous frames required to conclude a potential seizure trigger found and the difference required to sound the alarm (gifs are shorter so less quantities of danger are required)
 3. Set the data to be analyzed by the algorithm as every frame in the video (when the length of the video is short, every frame counts)
-4. Perform the <ins>Main analysis</ins> on this adjusted data set
+4. Perform the <ins>Main analysis</ins> on this adjusted data set (Skipping its first - `1.` step
 
 <ins>Ending</ins>
 1. If hard flashing lights was detected, add reactions to the discord message as a warning
 
 ## Time Complexity
-
+mmmmmm
 
 ## What I learned & Problems
 Working with videos, generator details, structure organization
