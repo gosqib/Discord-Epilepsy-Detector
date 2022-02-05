@@ -40,25 +40,23 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 1. If hard flashing lights was detected, add reactions to the discord message as a warning
 
 ## Time Complexity (Assuming .mp4 file received)
-`O(N)` where `N` is the number of total pixels in all frames of the video (can also be viewed as the duration of the video)
+`O(N^2)` where `N` is the number of total pixels in all frames of the video (can also be viewed as the duration of the video)
 <br>
 #### Contributing factor
 ##### Small details will be neglected
 -> `(Looping through every frame) * [(loop through frame to find mean pixel val) + (check if last ten frame's pixel value) + (add current frame data to storage) + (remove first data item in storage of portion if capacity reaches ten)]`
 <br>
--> `F * [F_p + 10 + 1 + 10]` where `F` is the number of frames of the video and `F_p` is the number of pixels in a frame. The value of F_p is `1/N`
+-> `F * [F_p + 10 + 1 + 10]` where `F` is the number of frames of the video and `F_p` is the number of pixels in a frame. The value of `F_p` is `1/N`
 <br>
 -> `F * (1/N + 21)`
 <br>
--> `F/N + 21F`
 <br>
+The value of `F` is `N/F_p` and `F_p` is 1/N; `F = N/(1/N)` = [`N^2`]
+-> `N^2/N + 21N^2`
 <br>
-The number of frames is a non-infinite integer,
+-> `N^2/N + 21(N^2)`
 <br>
--> `I_i/N + 21(I_i)` where `I_i` is an irrelevant integer
-<br>
-<br>
-Therefore, `N`
+Therefore, `N^2`
 <br>
 <br>
 (No other section of code will exceed this resullt since no other section includes a loop within a loop over `F`)
