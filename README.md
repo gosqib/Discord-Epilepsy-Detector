@@ -33,7 +33,7 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 1. Lower the requirements of number of dangerous frames required to conclude a potential seizure trigger found and the difference required to sound the alarm (gifs are shorter so less quantities of danger are required)
 3. Set the data to be analyzed by the algorithm as every frame in the video (when the length of the video is short, every frame counts)
 4. Perform the <ins>Main analysis</ins> on this adjusted data set (Skipping its first - `1.` step
-<br>
+
 <ins>Ending</ins>
 1. If hard flashing lights was detected, add reactions to the discord message as a warning
 
