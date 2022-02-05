@@ -1,6 +1,6 @@
 # Discord-Epilepsy-Detector
 # Warning: The below demonstration may be seizure inducing
-# Also, the gif checker does not work with message that don't start with `https://tenor.com/`
+# Also, the gif checker does NOT work with message that don't start with `https://tenor.com/`
 Ex. `qwehttps://tenor.com/ZJXy.gif`
 <br>
 
