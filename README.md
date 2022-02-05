@@ -35,23 +35,28 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 1. If hard flashing lights was detected, add reactions to the discord message as a warning
 
 ## Time Complexity (Assuming .mp4 file received)
-`O(N)` where `N` is the number of frames in the video (can also be seen as the duration of the video)
+`O(N)` where `N` is the number of total pixels in all frames of the video (can also be viewed as the duration of the video)
 <br>
 #### Contributing factor
 ##### Small details will be neglected
 -> `(Looping through every frame) * [(loop through frame to find mean pixel val) + (check if last ten frame's pixel value) + (add current frame data to storage) + (remove first data item in storage of portion if capacity reaches ten)]`
 <br>
--> `N * [(F_w)(F_l) + 10 + 1 + 10]` where `F_w` is the frame's width and `F_l` is the frame's length. In this case, the computation of `F_w * F_l` will be considered `1/N` (ignoring actual numerical values here)
+-> `F * [F_p + 10 + 1 + 10]` where `F` is the number of frames of the video and `F_p` is the number of pixels in a frame. The value of F_p is `1/N`
 <br>
--> `N * (1/N + 21)`
+-> `F * (1/N + 21)`
 <br>
--> `1 + 21N`
+-> `F/N + 21F`
+<br>
+<br>
+The number of frames is a non-infinite integer,
+<br>
+-> `I_i/N + 21(I_i)` where `I_i` is an irrelevant integer
 <br>
 <br>
 Therefore, `N`
 <br>
 <br>
-(No other section of code includes a loop within a loop over `N`)
+(No other section of code will exceed this resullt since no other section includes a loop within a loop over `F`)
 
 ## What I learned & Problems
 Working with videos, generator details, structure organization
