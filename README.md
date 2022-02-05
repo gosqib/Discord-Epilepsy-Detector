@@ -51,10 +51,10 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 -> `F * (1/N + 21)`
 <br>
 <br>
-The value of `F` is `N/F_p` and `F_p` is 1/N; `F = N/(1/N)` = [`N^2`]
+The value of `F` is `N/F_p` and `F_p` is `1/N`; `F = N/(1/N)` = [`N^2`]
+<br>
 -> `N^2/N + 21N^2`
 <br>
--> `N^2/N + 21(N^2)`
 <br>
 Therefore, `N^2`
 <br>
