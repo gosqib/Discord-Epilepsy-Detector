@@ -18,8 +18,8 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 1. Read all frames
 
 <ins>Main analysis</ins>
-1. Skip every second frame (the differences in every frame is negligible and causes inconsistencies)
-2. Grayscale every image (so it's easier to check frame's pixel averages to determine big differences)
+1. Skip every second frame &nbsp(the differences in every frame is negligible and causes inconsistencies)
+2. Grayscale every image &nbsp(so it's easier to check frame's pixel averages to determine big differences)
 3. 
 
 <ins>If video is a gif</ins>
