@@ -3,8 +3,9 @@
 # Also, the gif checker does NOT work with message that don't start with `https://tenor.com/`
 Ex. `qwehttps://tenor.com/ZJXy.gif`
 <br>
-<br>
-https://user-images.githubusercontent.com/69024184/152654024-3672dba8-ce8a-4fb6-b2aa-4c8deaa83879.mp4
+
+https://user-images.githubusercontent.com/69024184/152660005-15f88d20-89f4-43ff-b000-a869df4cdc79.mp4
+
 
 ## Setup
 1. Open the command prompt and download the required packages with `pip install opencv-python, numpy, discord.py, beautifulsoup4`
