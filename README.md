@@ -35,14 +35,18 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 1. If hard flashing lights was detected, add reactions to the discord message as a warning
 
 ## Time Complexity (Assuming .mp4 file received)
-`O(N^ASDASD)` where `W` is the width of the image and `L` is height of the image.
+`O(N)` where `N` is the number of frames in the video (can also be seen as the duration of the video)
 <br>
 #### Contributing factor
 ##### Small details will be neglected
 -> `(Looping through every frame) * [(loop through frame to find mean pixel val) + (check if last ten frame's pixel value) + (add current frame data to storage) + (remove first data item in storage of portion if capacity reaches ten)]`
 <br>
 -> `N * [(F_w)(F_l) + 10 + 1 + 10]` where `F_w` is the frame's width and `F_l` is the frame's length. In this case, `F_w * F_l /= N` and will be considered `<N`
+<br>
+<br>
 Therefore, `N`
+<br>
+<br>
 (No other section of code includes a loop within a loop over N)
 
 ## What I learned & Problems
