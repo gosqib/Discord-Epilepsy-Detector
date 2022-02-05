@@ -43,7 +43,7 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 <br>
 -> `N * [(F_w)(F_l) + 10 + 1 + 10]` where `F_w` is the frame's width and `F_l` is the frame's length. In this case, the computation of `F_w * F_l` will be 1/N
 <br>
-N * (1/N + 21)
+-> N * (1/N + 21)
 <br>
 -> 1 + 21N
 <br>
