@@ -21,9 +21,6 @@ No commands, just a discord `on_message` event handler. Whenever a message is se
 1. Skip every second frame (the differences in every frame is negligible and causes inconsistencies)
 2. Grayscale every image (so it's easier to check frame's pixel averages to determine big differences)
 3. Split each frame into eight equal parts ![image](https://user-images.githubusercontent.com/69024184/152646909-5d912253-120e-44bb-a797-afa75dd6c477.png) (breaking the image into smaller parts allow smaller portions of the image that could be an seizure trigger to be noticed in the difference-checking-process. If the entire image was checked for a pixel change, and only 50% of the image was a potential trigger, it may possibly miss the changes)
-<br>
->>
-<br>
 4. Loop through the frames
 5. Store the pixel averages of the eight portions
 6. On the next frame, check if there's a massive difference in any of the last ten results obtained through step `5.`. If there is, increase the trigger counter
