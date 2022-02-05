@@ -4,8 +4,11 @@ https://user-images.githubusercontent.com/69024184/152601424-4fd903c7-7dad-429d-
 
 ## Setup
 Open the command prompt and download the required packages with
-`pip askldjasdljk`
-btw add in your token
+<br>
+  `pip install opencv-python, numpy, discord.py, beautifulsoup4`
+<br>
+
+
 ## Features
 
 
