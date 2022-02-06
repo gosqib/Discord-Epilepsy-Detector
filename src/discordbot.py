@@ -74,7 +74,7 @@ async def on_message(message: Any) -> Annotated[None, 'or', DiscordMessageReacti
 		for reaction in EPILEPSY_DETECTION_REACTIONS:
 			await message.add_reaction(reaction)
 
-	os.remove(file_name)
+	os.remove(file_name) # can be done before doing discord reactions
 
 
 
@@ -84,5 +84,4 @@ async def bruh(ctx):
 	await ctx.send(bot.user)
 
 TOKEN = "[ADD_YOUR_TOKEN_HERE]"
-TOKEN = "OTM2NDQzMDE0NzY1NzU2NDE2.YfNQhA.lJuar7oBHDPU6YjeQZcS_KcqpfA"
 bot.run(TOKEN)
