@@ -9,7 +9,7 @@ https://user-images.githubusercontent.com/69024184/152660005-15f88d20-89f4-43ff-
 
 ## Setup
 1. Open the command prompt and download the required packages with `pip install opencv-python, numpy, discord.py, beautifulsoup4`
-2. Add in your discord bot token by replacing [`TOKEN`](https://github.com/gosqib/Discord-Epilepsy-Detector/blob/master/src/discordbot.py#L82)'s value of `[ADD_YOUR_TOKEN_HERE]` (delete brackets too)
+2. Add in your discord bot token by replacing [`TOKEN`](https://github.com/gosqib/Discord-Epilepsy-Detector/blob/master/src/discordbot.py#L86)'s value of `[ADD_YOUR_TOKEN_HERE]` (delete brackets too)
 
 Now you can run `discordbot.py` in `src` and the bot will start working in all servers.
 
