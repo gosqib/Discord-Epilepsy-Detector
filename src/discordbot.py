@@ -4,7 +4,7 @@ import discord #type:ignore
 from typing import Annotated, Any, Union
 import os
 
-from keyvars.consts import EPILEPSY_DETECTION_REACTIONS
+from keyvars.consts import EPILEPSY_DETECTION_REACTIONS, GIF_DANG_TRIG_REQ, GIF_DRAM_PIX_CHANGE
 from keyvars.mytypes import DiscordMessageReactions
 from webscrape import get_tenor
 from detector import Detector
@@ -41,7 +41,11 @@ async def on_message(message: Any) -> Annotated[None, 'or', DiscordMessageReacti
 			# check for epilepsy in this gif through webscraping
 			file_mdta = get_tenor(link=message_text)
 			gif = cv.VideoCapture(file_mdta)
-			check = Detector(gif).epilepsy(is_gif=True)
+			check = Detector(gif).epilepsy(
+				is_gif=True, 
+				dramatic_pixel_change=GIF_DRAM_PIX_CHANGE,
+				danger_trigger_requirement=GIF_DANG_TRIG_REQ
+			)
 			# print(check)
 
 			if check:
@@ -80,4 +84,5 @@ async def bruh(ctx):
 	await ctx.send(bot.user)
 
 TOKEN = "[ADD_YOUR_TOKEN_HERE]"
+TOKEN = "OTM2NDQzMDE0NzY1NzU2NDE2.YfNQhA.lJuar7oBHDPU6YjeQZcS_KcqpfA"
 bot.run(TOKEN)
