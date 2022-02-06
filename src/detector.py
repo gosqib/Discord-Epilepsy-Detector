@@ -5,12 +5,8 @@ import numpy as np
 from toolbox import get_frames
 from testing import TEST_VIDEO
 from keyvars.consts import (
-	GIF_DANG_TRIG_REQ, 
 	HORIZ_PORTIONS, 
 	VERT_PORTIONS, 
-	GIF_DRAM_PIX_CHANGE,
-	MP4_DANG_TRIG_REQ,
-	MP4_DRAM_PIX_CHANGE,
 	FRAME_SKIP_START,
 	FRAME_COLLECTION_SKIP,
 	NO_PORTIONS,
@@ -37,23 +33,19 @@ class Detector:
 		self._all_frames = tuple(get_frames(self._video))	# list > tuple for mutability to slice last element
 		# print(len(self._all_frames))
 
-	def epilepsy(self, is_gif: Optional[bool] = False) -> bool:
+	def epilepsy(
+			self, 
+			is_gif: Optional[bool] = False, 
+			dramatic_pixel_change: Optional[int] = 200,
+			danger_trigger_requirement: Optional[int] = 8
+		) -> bool:
 		"""detect hard flashing lights"""
 		
-		if is_gif:
-			# this section is just some adjustments for gifs since they're different from .mp4
-			
-			DANGER_TRIGGER_REQUIREMENT = GIF_DANG_TRIG_REQ
-			DRAMATIC_PIXEL_CHANGE = GIF_DRAM_PIX_CHANGE
-			cut_frames = self._all_frames 	# if the video is short, just take everything
-		else:
-			DANGER_TRIGGER_REQUIREMENT = MP4_DANG_TRIG_REQ
-			DRAMATIC_PIXEL_CHANGE = MP4_DRAM_PIX_CHANGE
-			cut_frames = (
-				self._all_frames
-				[FRAME_SKIP_START :: FRAME_COLLECTION_SKIP] 
-				# take every x frame starting from s - getting everything is not usually useful
-			)
+		cut_frames = self._all_frames if is_gif else (
+			self._all_frames # if the video is short, just take everything
+			[FRAME_SKIP_START :: FRAME_COLLECTION_SKIP] 
+			# take every x frame starting from s - getting everything is not usually useful
+		)
 
 		# group the frames of the _video into tuples with 100 frames each, stored in dictionary
 		frames = (cv.cvtColor(frame, cv.COLOR_BGR2GRAY) for frame in cut_frames)
@@ -81,7 +73,7 @@ class Detector:
 
 				avg = np.mean(frame_data[portion])
 				if any(
-						abs(prev_avg - avg) > DRAMATIC_PIXEL_CHANGE # compare with previous frame's average
+						abs(prev_avg - avg) > dramatic_pixel_change # compare with previous frame's average
 						for prev_avg 
 						in portion_data[portion]
 					):
@@ -102,7 +94,7 @@ class Detector:
 					portion_data[portion].pop()
 
 		# print(triggers)
-		return triggers >= DANGER_TRIGGER_REQUIREMENT
+		return triggers >= danger_trigger_requirement
 
 
 if __name__ == '__main__':
