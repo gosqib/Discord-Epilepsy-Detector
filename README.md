@@ -1,5 +1,5 @@
 # Discord-Epilepsy-Detector
-# Warning: The below demonstration may be seizure inducing
+# Warning: The below demonstration
 # Also, the gif checker does NOT work with message that don't start with `https://tenor.com/`
 Ex. `qwehttps://tenor.com/ZJXy.gif`
 <br>
@@ -17,8 +17,7 @@ Now you can run `discordbot.py` in `src` and the bot will start working in all s
 
 No commands, just a discord `on_message` event handler. Whenever a message is sent in any server, the program will first check if there're any attachments. If there is, check if the first attachment is a `.mp4` file, if so; perform the flashing-light-checking algorithm on it. If the previous requirements weren't satisfied, check if the message is a discord `/tenor` message and pending a `True`, perform the flashing-light-algorithm on the `/tenor` message.  
 
-## Main Strategy
-### Epilepsy checking algorithm
+## Epilepsy checking
 <ins>Preliminary steps</ins>
 1. Read all frames
 
@@ -56,10 +55,4 @@ The value of `F` is `N/F_p` and `F_p` is `1/N`; `F = N/(1/N)` = [`N^2`]
 -> `N^2/N + 21N^2`
 <br>
 <br>
-Therefore, `N^2`
-<br>
-<br>
-(No other section of code will exceed this resullt since no other section includes a loop within a loop over `F`)
 
-## What I learned & Problems
-Working with videos, generator details, structure organization
